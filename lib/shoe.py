@@ -1,8 +1,10 @@
+#!/usr/bin/env python3
+
 class Shoe:
     def __init__(self, brand, size):
         self.brand = brand
-        self.size = size  # This will use the setter for validation
-        self.condition = "Used"  # Default condition
+        self.size = size  # This will trigger the setter
+        self.condition = "Old" 
 
     @property
     def size(self):
@@ -10,11 +12,10 @@ class Shoe:
 
     @size.setter
     def size(self, value):
-        if not isinstance(value, int):
+        if isinstance(value, int):
+            self._size = value
+        else:
             print("size must be an integer")
-            raise ValueError("size must be an integer")
-        self._size = value
-
     def cobble(self):
-        self.condition = "New"
+        self.condition = "New" 
         print("Your shoe is as good as new!")
